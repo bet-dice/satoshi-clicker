@@ -1,0 +1,260 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>bitcoin clicker</title>
+    <link href="css/bitcoin-clicker.css" rel="stylesheet" />
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-34543220-1', 'auto');ga('send', 'pageview');</script>
+  </head>
+  <body>
+    <div id="header">
+      <h1><span class="long-currency-name">bitcoin</span> clicker</h1>
+    </div>
+    <div id="game">
+      <div id="left-pane">
+        <div id="inventory">
+          <h3>You have <span id="satoshis-owned">0</span> <span class="long-currency-name">bitcoin</span>.</h3>
+          <p>You mine <span class="mining-rate">0.00000000</span> <span class="short-currency-name">btc</span> per second.</p>
+          <p>You can mine for <span class="long-currency-name">bitcoin</span> by hand, if you want.</p>
+          <p>This is generally considered a bad idea. You'll get <span id="click-rate">0.00000001</span> <span class="long-currency-name">bitcoin</span> per click.</p>
+          <input id="hand-mine-button" type="button" value="Mine for bitcoin. By hand."/>
+          <div id="unlock-statistics">
+            <p>Hey, maybe you should get some statistics about how much things cost.</p>
+            <input id="unlock-statistics-button" type="button" value="Click 10 times to unlock statistics." />
+          </div>
+        </div>
+        <div id="inv-bottom">
+          <span id="currency-changer">
+            <p id="doge-on">doge me, baby!</p>
+            <p id="bitcoin-on">bitcoin is serious business.</p>
+          </span>
+          <p>Version <span class="version"></span> made by <a href="../">zck</a></p>
+        </div>
+      </div>
+      <div id="gamefield">
+        <div id="goal">
+          <div class="collapse gamefield-collapse">
+            <div class="collapse-icon gamefield-collapser">
+              &ndash;
+            </div>
+            <div class="collapse-icon gamefield-expander hidden">
+              +
+            </div>
+          </div>
+          <div id="in-game">
+            <h3>Satoshi has been kidnapped!</h3>
+            <div id="goal-body" class="body">
+              <p>Some guys took Satoshi. Maybe it's some Wall Street bankers, maybe it's the PayPal mafia. But my money's on Paul Krugman.</p>
+              <p>Whoever they are, they want <span class="ransom-cost">1.00000000</span> <span class="short-currency-name">btc</span> for Satoshi's ransom. And their demand is increasing every second.</p>
+            </div>
+            <input type="button" value="Ransom!" id="ransom-button" /> ( <span class="ransom-cost">1.00000000</span> <span class="short-currency-name">btc</span> )
+          </div>
+          <div id="has-won">
+            <p>You won! Yay!</p>
+          </div>
+        </div>
+        <div id="clicking-upgrades" class="container">
+          <div class="collapse">
+            <div class="collapse-icon hand-mining-hider">
+              &ndash;
+            </div>
+            <div class="collapse-icon hidden hand-mining-shower">
+              +
+            </div>
+          </div>
+          <h3>Hand-Mining Upgrades</h3>
+
+          <div id="hand-mining-body" class="body">
+            <div id="basic-math">
+              <h4>Basic Math</h4>
+              <p>Figure out a way so that you don't have to calculate as much to mine a block. While this would normally be a PhD thesis in computer security, or at least a promotion at the NSA, but you're using it to save a dude you've never met. Good on you.</p>
+              <input type="button" value="Find a basic optimization to mining." id="basic-math-purchase-button"/>
+              ( <span class="cost">pants</span> <span class="short-currency-name">btc</span> )
+            </div>
+            <div id="abacus">
+              <h4>Abacus</h4>
+              <p>This is an ancient calculating device. Unfortunately, you don't actually know how it works, so it won't help you mine any faster.</p>
+              <input type="button" id="abacus-purchase-button" value="This is thousands of years old. Try not to break it." onclick="alert('You don\'t know how to work this thing, so it\'s pretty useless. You\'re clearly no abacist.');"/>
+              ( <span class="cost"></span> <span class="short-currency-name">btc</span> )
+            </div>
+            <div id="calculator">
+              <h4>Calculator</h4>
+              <p>Get a calculator. You can write <span class="upside-down monospace">5318008</span> on it, and it has Drug Wars. I guess it'll also double your mining speed.</p>
+              <input type="button" id="calculator-purchase-button" value="Break out a TI-83" />
+              ( <span class="cost"></span> <span class="short-currency-name">btc</span> )
+            </div>
+            <div id="mathematician" class="hidden">
+              <h4>mathematician</h4>
+              <p>Hire a mathematician away from the top-secret government facility she works at. She'll help you out, for a price.</p>
+              <input type="button" id="mathematician-purchase-button" value="Bribe her with new pencils" />
+              ( <span class="cost"></span> <span class="short-currency-name">btc</span> )
+            </div>
+
+            <div id="pickaxe" class="hidden">
+              <h4>pickaxe</h4>
+              <p>Buy a pickaxe to help you mine. Sure, <em>now</em> you complain that the "mining" analogy doesn't make sense.</p>
+              <p>They said that in the Gold Rush, the people who made money were the people selling pickaxes to the miners. What does that say about this game?</p>
+              <input type="button" id="pickaxe-purchase-button" value="Hi ho!" />
+              ( <span class="cost"></span> <span class="short-currency-name">btc</span> )
+            </div>
+          </div>
+        </div>
+
+        <div id="mining-container" class="container">
+          <div id="cpu-mining" class="mining-container">
+            <div class="collapse">
+              <div class="collapse-icon cpu-mining-hider">
+                &ndash;
+              </div>
+              <div class="collapse-icon hidden cpu-mining-shower">
+                +
+              </div>
+            </div>
+            <h3>cpu mining</h3>
+            <div id="cpu-mining-body" class="body">
+              <p>Whoa, you can mine <span class="long-currency-name">bitcoin</span> on computers now?</p>
+              <div id="mark-i">
+                <h4><a href="https://en.wikipedia.org/wiki/Harvard_Mark_I">Harvard Mark I</a></h4>
+                <p>This was a really early computer that you stole from <a href="http://chsi.harvard.edu/chsi_markone.html">Harvard</a>. Not cool, buddy. It's slow, but it sure beats doing the math in your head. Each one mines <span class="rate"></span> <span class="long-currency-name">bitcoin</span> per second.</p>
+                <input type="button" id="mark-i-purchase-button" class="purchase-button" value="Come here Watson, I need you!" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                  )
+                <p class="amount">You have <span class="number">0</span> installation<span class="plural">s</span> of Mark I. You must have a lot of room.</p>
+              </div>
+
+              <div id="4004" class="hidden">
+                <h4><a href="https://en.wikipedia.org/wiki/Intel_4004">Intel 4004</a></h4>
+                <p>This is the first microprocessor that you could buy. Or, at least that someone could buy. Ok, the public could buy. It has a 4-bit instruction set, so you stapled 16 of them together and installed the 64-bit version of <span class="os"></span>. These mine <span class="rate"></span> <span class="short-currency-name">btc</span> per second.</p>
+                <input type="button" class="purchase-button"  value="4004s and heartbreak" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                  )
+
+                  <p class="amount">You have <span class="number">0</span> 4004 chip<span class="plural">s</span>. Good thing <span class="plural">they're</span><span class="singular">it's</span> small.</p>
+              </div>
+
+              <div id="8086" class="hidden">
+                <h4><a id="8086-link" href="https://en.wikipedia.org/wiki/Intel_8086"><span class="miner-name">8086</span></a></h4>
+                <p>16 bits? What, do they measure this like bandwidth? Don't we really care about bytes? Anyway, these mine <span class="rate"></span> <span class="short-currency-name">btc</span> per second</p>
+                <input type="button" class="purchase-button"  value="Buy 8086 of these. Or just one" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                  )
+
+                <p class="amount">You have <span class="number">0</span> <span class="miner-name">8086</span><span class="plural">s</span>.</p>
+              </div>
+
+              <div id="80286" class="hidden">
+                <h4><a href="https://en.wikipedia.org/wiki/Intel_80286">80286</a></h4>
+                <p>Upgrade your 8086s to 80286s.</p>
+                <input type="button" id="80286-purchase-button" class="purchase-button" value="It's just adding a '2'. It can't be that complicated!" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>)
+              </div>
+
+              <div id="pentium-4" class="hidden">
+                <h4>Pentium 4</h4>
+                <p>Not Intel Celerons, these are the top of the line model. At least, they were in 2000. They mine <span class="rate"></span> <span class="short-currency-name">btc</span> per second</p>
+                <input type="button" class="purchase-button" value="It's all about the Pentiums, baby" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                  )
+
+                <p class="amount">You have <a href="https://www.youtube.com/watch?v=qpMvS1Q1sos">100 gigabytes of ram</a>, but only <span class="number">0</span> Pentium 4<span class="plural">s</span>.</p>
+              </div>
+              <div id="air-cooling" class="hidden">
+                <h4>air cooling</h4>
+                <p>This lets you cool your Pentiums with the <a href="http://www.apsf.org/newsletters/html/1996/summer/apsfmedair.html">same thing</a> airplanes <a href="http://physics.stackexchange.com/questions/290/what-really-allows-airplanes-to-fly">throw at the ground</a>. That means you can overclock them.</p>
+                <input type="button" id="air-cooling-purchase-button" class="purchase-button" value="Your computer goes faster if you cool it with nitrogen. Wait, that's your Honda." />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span> )
+              </div>
+              <div id="arduino" class="hidden">
+                <h4>Arduino</h4>
+                <p>A tiny, simple cpu. If you strap a battery to it, you could mine in your pocket! This is impressive unless you have pockets large enough for your laptop to fit in. Anyway, each arduino now mines <span class="rate"></span> <span class="short-currency-name">btc</span> per second.</p>
+                <input type="button" class="purchase-button" value="Hope you have a lot of jumper wires" />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                  )
+                <p class="amount">You have <span class="number">0</span> pair<span class="plural">s</span> of jeans with <a href="http://store.arduino.cc/index.php?main_page=product_info&cPath=30&products_id=287">embedded chips</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="gpu-mining" class="mining-container">
+            <div class="collapse gamefield-collapse">
+              <div class="collapse-icon gpu-mining-hider">
+                &ndash;
+              </div>
+              <div class="collapse-icon hidden gpu-mining-shower">
+                +
+              </div>
+            </div>
+            <h3>gpu mining</h3>
+            <div id="gpu-mining-body" class="body">
+              <p>So it turns out that you can mine a lot better on your GPU than you can on your CPU. You don't understand the details, but it's something about video games being isomorphic to fiscal policy.</p>
+              <div class="body">
+                <div id="color-graphics-adapter">
+                  <h4><a href="https://en.wikipedia.org/wiki/Color_Graphics_Adapter">IBM Color Graphics Adapter</a></h4>
+                  <p>This was IBM's first graphics card. It was powerful enough to push sixteen colors over one hundred thousand pixels. That translates to <span class="rate"></span> <span class="short-currency-name">btc</span> per second. This was more impressive in 1981, especially because <span class="long-currency-name">bitcoin</span> wasn't even created for almost thirty years.</p>
+                  <input type="button" class="purchase-button" value="Can you even plug this into anything?" />
+                  ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                  <span class="statistics">
+                    <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                    <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                    )
+                    <p class="amount">You have <span class="number">0</span> card<span class="plural">s</span>.</p>
+                </div>
+              </div>
+              <div id="GeForce-256" class="hidden">
+                <h4><a href="http://www.nvidia.com/page/geforce256.html">GeForce 256</a></h4>
+                <p>If you believe nvidia, it's the first GPU. If you don't, it's a pretty crappy bookmark. Either way, it mines <span class="rate"></span> <span class="short-currency-name">btc</span> per second.</p>
+                <input type="button" class="purchase-button" value="256 bits should be enough for anyone." />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                  <span class="statistics">
+                    <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                    <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span></span>
+                    )
+                    <p class="amount">You have a GeForce <span class="number">0</span> <a href="https://en.wikipedia.org/wiki/Enhanced_Fujita_scale">tornado</a>.</p>
+              </div>
+              <div id="OpenGL" class="hidden">
+                <h4><a href="https://en.wikipedia.org/wiki/OpenGL">OpenGL</a></h4>
+                <p>Like a pencil, OpenGL is an API for drawing graphics. Unlike a pencil, OpenGL takes advantage of your graphics card to work really fast. Or something. I don't know; check out the wikipedia page. What I do know is each version of OpenGL makes you <span class="rate"></span> more <span class="short-currency-name">btc</span> per second.</p>
+                <input type="button" class="purchase-button" value="Write some software that uses your hardware better." />
+                ( <span class="cost"></span> <span class="short-currency-name">btc</span>
+                <span class="statistics">
+                  <span class="purchased"> <span class="payback-time"></span> seconds</span>
+                  <span class="not-purchased"><input type="button" class="purchase-statistic-button" /></span>
+                </span>
+                )
+                <p class="amount">OpenGL is at <span class="monospace">v<span class="number">0</span>.0</span>.</p>
+              </div>
+              <div id="GPGPU" class="hidden">
+                <h4><a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">General-purpose computing on graphics processing units</a></h4>
+                <p>
+              </div>
+            </div>
+          </div>
+          <div id="asic-mining" class="mining-container">
+            <p>asic mining</p>
+
+            <div id="the-thing-that-takes-forever">
+              <p>Figure out whatever it was that took forever to be delivered, then sell it for cheap, but with a 1% chance of being delivered per second.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/bitcoin-clicker.js"></script>
+  </body>
+</html>
