@@ -1,0 +1,119 @@
+body {
+    text-align: center;
+    height:100%;
+}
+
+#goal {
+    border: 1px solid red;
+    padding: 4px;
+    text-align: center;
+}
+
+#clicking-upgrades {
+    text-align: center;
+    border: 1px solid blue;
+    padding: 4px;
+}
+
+.container {
+    margin-top: 25px;
+}
+
+#cpu-mining {
+    border: 1px solid green;
+}
+
+#gpu-mining {
+    border: 1px solid #C0B010;
+}
+
+.mining-container {
+    display: none;
+    margin-bottom: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+#game {
+    position: absolute;
+    top: 80px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.upside-down {
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg); /* IE 9 */
+    -moz-transform:rotate(180deg); /* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari and Chrome */
+    -o-transform:rotate(180deg); /* Opera */
+    display: inline-block;
+}
+
+.monospace {
+    font-family: Courier, monospace;
+}
+
+#has-won {
+    display: none;
+}
+
+#left-pane {
+    float: left;
+    width: 30%;
+    height: 100%;
+}
+
+#gamefield {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 0px;
+    left: 30%;
+    bottom: 0px;
+    right: 0px;
+    padding-right: 0.5em;
+}
+
+#header {
+    height: 60px;
+}
+
+#inv-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
+.collapse {
+    position: absolute;
+    right: 1em;
+}
+
+#unlock-statistics {
+    margin-top: 5ex;
+    display: none;
+}
+
+.statistics {
+    display: none;
+}
+
+.purchased {
+    display: none;
+}
+
+#bitcoin-on {
+    display: none;
+}
+
+.singular {
+    display: none;
+}
+
+#inv-bottom {
+    text-align: left;
+    margin-left: 1ex;
+}
